@@ -91,13 +91,14 @@ ion-modal{
 
           .back-btn{
             // padding: $space-500;
-            display: flex;
             height: 1.5rem;
             align-items: center;
             justify-content: center;
             aspect-ratio: 1;
             border: 1px solid $outer-border-color;
             border-radius: $space-100;
+            cursor: pointer;
+
 
             i{
               font-size: 1rem;
@@ -116,22 +117,17 @@ ion-modal{
 
         padding-inline: $space-1000 $space-300;
 
-        &:has(ion-list .item .item__angle.active){
-          // --height: 62px;
-          // --item-count: 5;
-
-          ion-list{
-            .item{
-              padding-block: $space-500;
-            }
-          }
-        }
-
         ion-list{
           padding: 0;
           padding-right: $space-300;
           height: calc(var(--height) * var(--item-count));
           overflow: auto;
+
+          &.product__list{
+            .item{
+            padding-block: $space-500;
+            }
+          }
 
           .item{
             flex-direction: row;

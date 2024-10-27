@@ -48,9 +48,11 @@ export class HomePage {
   ];
 
   public selectedSupplier: any = null;
+  public selectedProducts: string[] = [];
 
   selectSupplier(supplier: any) {
     this.selectedSupplier = supplier;
+    this.selectedProducts = supplier.products;
   }
 
   public results = [...this.supplierList];

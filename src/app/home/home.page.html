@@ -29,7 +29,12 @@
               <i class="fa-solid fa-angle-left"></i>
             </div>
             <div *ngIf="selectedSupplier == null"></div>
-            <span>Browse</span>
+            <span *ngIf="selectedSupplier; else noSupplier">
+              {{selectedSupplier.name}}
+            </span>
+            <ng-template #noSupplier>
+              <span>Browse</span>
+            </ng-template>
             <div class="close__modal" (click)="cancel()">
               <i class="fa-solid fa-xmark"></i>
             </div>
@@ -38,13 +43,15 @@
         </div>
         <div class="body">
           <div *ngIf="selectedSupplier">
-            <h3>Products for {{ selectedSupplier.name }}:</h3>
+            <ion-list class="product__list">
+              <div class="item" *ngFor="let product of selectedProducts">
+                <div class="item__content"><span>{{ product }}</span></div>
+                <div class="item__angle">
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </div>
+            </ion-list>
           </div>
-          <!-- <div *ngIf="supplier != ''; else noSupplierSelected">
-
-            {{supplier}}
-
-          </div> -->
 
           <ion-list *ngIf="selectedSupplier == null">
             <div class="item" *ngFor="let supplier of supplierList" (click)="selectSupplier(supplier)">
