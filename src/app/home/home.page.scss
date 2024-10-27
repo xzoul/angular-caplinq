@@ -1,27 +1,196 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+:root{
+  --primary-color: 0, 0, 0;
+  // $secondary-color: ;
+  --background: white;
+  --border-color: rgb(196, 196, 196);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+$primary-color: rgb(62, 71, 96);
+$secondary-color: rgb(128, 130, 133);
+
+$outer-border-color: rgb(196, 196, 196);
+$inner-border-color: rgb(229, 229, 229);
+
+$space-1000: 2.5rem;
+$space-900: 2.25rem;
+$space-800: 2rem;
+$space-700: 1.75rem;
+$space-600: 24px;
+$space-500: 20px;
+$space-400: 1rem;
+$space-300: 12px;
+$space-250: 10px;
+$space-200: 8px;
+$space-100: 4px;
+
+
+*{
+  &:not(i) {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+main{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 
-  color: #8c8c8c;
+  & div{
+    display: flex;
+    flex-direction: inherit;
+  }
 
-  margin: 0;
+  .browse-btn{
+    align-items: flex-start;
+  }
+
 }
 
-#container a {
-  text-decoration: none;
+ion-modal{
+  --height: auto;
+  overflow: hidden;
+  --border-radius: $space-400;
+  // border: 1px solid $outer-border-color;
+  // --height: 100%;
+
+  * {
+    color: $primary-color;
+  }
+
+  & div{
+    display: flex;
+    flex-direction: inherit;
+  }
+
+  section{
+    display: flex;
+    flex-direction: column;
+
+    &.browse__supplier{
+      .header{
+        padding: $space-1000 $space-1000 $space-600;
+        gap: $space-1000;
+        border-bottom: 1px solid $inner-border-color;
+
+        .title{
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+
+          span{
+            font-size: 1.25rem;
+            color: $secondary-color;
+          }
+
+          i{
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: $secondary-color;
+          }
+
+          .back-btn{
+            // padding: $space-500;
+            display: flex;
+            height: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            border: 1px solid $outer-border-color;
+            border-radius: $space-100;
+
+            i{
+              font-size: 1rem;
+            }
+          }
+        }
+
+        ion-searchbar{
+          padding: 0;
+        }
+      }
+
+      .body{
+        --height: 42px;
+        --item-count: 10;
+
+        padding-inline: $space-1000 $space-300;
+
+        &:has(ion-list .item .item__angle.active){
+          // --height: 62px;
+          // --item-count: 5;
+
+          ion-list{
+            .item{
+              padding-block: $space-500;
+            }
+          }
+        }
+
+        ion-list{
+          padding: 0;
+          padding-right: $space-300;
+          height: calc(var(--height) * var(--item-count));
+          overflow: auto;
+
+          .item{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: $space-250;
+            padding-right: $space-300;
+
+            .item__content{
+              gap: $space-500;
+            }
+
+            .item__angle{
+              cursor: pointer;
+
+              i{
+                color: $outer-border-color;
+              }
+
+              &.active{
+                i{
+                  transform: rotate(90deg);
+                }
+              }
+            }
+
+            &:not(:last-of-type){
+              border-bottom: 1px solid $inner-border-color;
+            }
+          }
+
+        }
+      }
+
+      .footer{
+        flex-direction: row;
+        padding: $space-500 $space-1000;
+        gap: $space-1000;
+        border-top: 1px solid $inner-border-color;
+
+        .selection{
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+
+          span{
+            padding: $space-300 $space-600;
+            border: 1px solid $outer-border-color;
+          }
+
+          .footer-btn{
+            gap: $space-500;
+
+            button{
+              padding: $space-300 $space-600;
+            }
+          }
+        }
+      }
+    }
+  }
 }
