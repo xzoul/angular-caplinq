@@ -1,0 +1,7 @@
+{
+  "name": "angular-caplinq",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
